@@ -152,25 +152,21 @@ end
 	
 	--add slider
 		local yp = self.n*self.colH+50
-	
-			local slit = Bitmap.new( Texture.new("sliderbar.png", true, {transparentColor = 0xffffff} ) )
-			slit:setAnchorPoint( 0, 0.5 )
 
-			local knob = Bitmap.new( Texture.new("square.png", true, {transparentColor = 0xffffff}) )
-			
-			knob:setAnchorPoint( 0.5, 0.5 )
+		local slit = self:drawRec(0, 0, self.colW*self.m, 2, 2, 0x000000, 1, 0x000000, 1)
+		local knob = self:drawRec(-10, -16, 20, 32, 5, 0x000000, 0.8, 0x000000, 0)
 
-			self.saturationSlider = Slider.new( slit, knob, true, 2, 100 )
+		self.saturationSlider = Slider.new( slit, knob, true, 2, 100 )
 
-			self.saturationSlider:setPosition( 10, yp )
-			self.saturationSlider:setVisible(false)
-			self:addChild( self.saturationSlider )
+		self.saturationSlider:setPosition( 10, yp )
+		self.saturationSlider:setVisible(false)
+		self:addChild( self.saturationSlider )
 
-			self.saturationSlider:setValue( self.saturation )
+		self.saturationSlider:setValue( self.saturation )
 
 
-			
-			self.saturationSlider:addEventListener("update", self.updateSValue, self)
+		
+		self.saturationSlider:addEventListener("update", self.updateSValue, self)
 end
 
 function ColorPicker:updateSValue()
